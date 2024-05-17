@@ -1,0 +1,32 @@
+{
+  "name": "unist-formula-ast",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "gen:dev": "peggy -w -c peggy.config.cjs",
+    "gen:build": "peggy -c peggy.config.cjs"
+  },
+  "keywords": [
+    "unist",
+    "excel formula",
+    "ast",
+    "peggy"
+  ],
+  "author": "Herbert He<Herbert.He0229@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "peggy": "^4.0.2",
+    "ts-pegjs": "^4.2.1",
+    "unist-builder": "^4.0.0"
+  }
+}
