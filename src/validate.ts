@@ -2,7 +2,11 @@ import { visit } from "unist-util-visit"
 import { parser } from "./parser"
 
 const validateTree = () => {
-    
+  // TODO validate
+}
+
+const transformUnistErrorsToCodeMirrorMarkers = () => {
+  // TODO validate
 }
 
 /**
@@ -11,13 +15,15 @@ const validateTree = () => {
  */
 export const validateForCodeMirror = (formula: string) => {
   try {
-    // parse to get tree
+    // First, parse to get tree
     const tree = parser.parse(formula)
-
+    // Next, validate tree to get errors
+    // Next, transfrom unist errors to CodeMirror Markers
+    // Then, the CodeMirror can use the markers to render for the users
   } catch (err) {
     // TODO handle the error
     if (err instanceof parser.PeggySyntaxError) {
-        // Peggy Syntax Error
+      // Peggy Syntax Error
     }
   }
 }

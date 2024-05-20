@@ -12,7 +12,7 @@ If you want to know how to use *unist-formula-ast* directly, read [Getting Start
 
 ## Introduction
 
-This document defines a format for [abstract syntax tree][unist]. Development of unist-formula-ast started in May 2024. This specification is written in a [Web IDL][web-idl]-like grammar.
+This document defines a format for [abstract syntax tree][unist]. Development of unist-formula-ast started in May 2024. This specification is written in a ~~[Web IDL][web-idl]-like~~ TypeScript grammar.
 
 ### Where this specification fits
 
@@ -24,10 +24,63 @@ If you are using TypeScript, you can use the unist types by installing them with
 npm install unist-formula-ast
 ```
 
+## Nodes(abstract)
+
+### `BasicNode`
+
+```typescript
+interface IBasicNode {
+  type: BasicNodeType | BasicCalculationNodeType
+  value?: string | number
+  position: IBasicNodePosition
+  children?: IBasicNode[]
+}
+```
+
 ## Nodes
 
-> TODO
->
+### `BasicCalculationNode`
+
+```typescript
+type BasicCalculationNodeType =
+  | "Addition"
+  | "Subtraction"
+  | "Multiplication"
+  | "Division"
+
+interface IBasicCalculationNode extends IBasicNode {
+  type: BasicCalculationNodeType
+  children: IBasicNode[]
+}
+```
+
+### `NumberNode`
+
+```typescript
+interface INumberNode extends IBasicNode {
+  type: "Number"
+  value: number
+}
+```
+
+### `VariableNode`
+
+```typescript
+interface IVariableNode extends IBasicNode {
+  type: "Variable"
+  value: string
+}
+```
+
+### `FuntionCallNode`
+
+```typescript
+interface IFuntionCallNode extends IBasicNode {
+  type: "Function"
+  value: string
+  children: FuntionCallArgumentType[]
+}
+```
 
 ## References
 
