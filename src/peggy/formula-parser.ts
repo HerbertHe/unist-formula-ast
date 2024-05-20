@@ -1525,7 +1525,7 @@ peg$parse_() {
   }
 
 
-  // 处理 position
+  // handle position
 // @ts-ignore
   function handlePosition(location) {
 // @ts-ignore

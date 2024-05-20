@@ -1,6 +1,11 @@
 import { visit } from "unist-util-visit"
 import { BasicNodeEnum, type SupportedNodeType } from "./types"
 
+/**
+ * Stringify the ast node
+ * @param {SupportedNodeType} node ast node
+ * @returns 
+ */
 export const stringify = (node: SupportedNodeType) => {
   let result: string = ""
   visit(node, (node: SupportedNodeType) => {
