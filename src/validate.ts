@@ -1,5 +1,4 @@
 import { linter, type Diagnostic } from "@codemirror/lint"
-import type {} from "@codemirror/state"
 
 import { parser } from "./parser"
 import { ISyntaxError } from "./types"
