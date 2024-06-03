@@ -52,7 +52,7 @@ FunctionCall
 
 // 函数名
 FunctionName
-  = name:[a-zA-z0-9]+ { return name.join(""); }
+  = name:[A-Z]+ { return name.join(""); }
 
 // 参数列表
 ArgumentList

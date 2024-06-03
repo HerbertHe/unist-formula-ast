@@ -9,7 +9,7 @@ import { BasicNodeEnum, type SupportedNodeType } from "./types"
 export const stringify = (node: SupportedNodeType) => {
   let result: string = ""
   visit(node, (node: SupportedNodeType) => {
-    const { type, children, value } = node
+    const { type, children, data } = node
     switch (type) {
       case BasicNodeEnum.Addition: {
         result += `${stringify(children[0])}+${stringify(children[1])}`
@@ -28,15 +28,19 @@ export const stringify = (node: SupportedNodeType) => {
         break
       }
       case BasicNodeEnum.Number: {
-        result += value
+        result += data
         break
       }
       case BasicNodeEnum.Variable: {
-        result += value
+        result += data
+        break
+      }
+      case BasicNodeEnum.String: {
+        result += data
         break
       }
       case BasicNodeEnum.Function: {
-        result += `${value}(${children
+        result += `${data}(${children
           .map((child) => stringify(child))
           .join("")})`
         break

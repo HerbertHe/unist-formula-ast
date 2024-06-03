@@ -1,6 +1,6 @@
 {
   "name": "unist-formula-ast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Excel formula ast to implement unist specification",
   "type": "module",
   "main": "dist/index.js",
@@ -35,6 +35,8 @@
     "vitest": "^1.6.0"
   },
   "dependencies": {
+    "@codemirror/lint": "^6.8.0",
+    "@codemirror/state": "^6.4.1",
     "peggy": "^4.0.2",
     "ts-pegjs": "^4.2.1",
     "unist-builder": "^4.0.0",
