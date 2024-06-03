@@ -34,16 +34,20 @@ Multiplication
     }
   / Primary
 
+// TODO 支持比较运算
+
 // 基础表达式
 Primary
   = Number
+  / String
+  / Variable
   / FunctionCall
   / "(" _ expr:Expression _ ")" { return expr; }
 
 // 函数调用
 FunctionCall
   = name:FunctionName _ "(" _ args:ArgumentList _ ")" {
-      return u('Function', { value: name, children: args, position: handlePosition(location()) });
+      return u('Function', { data: name, children: args, position: handlePosition(location()) });
     }
 
 // 函数名
@@ -60,20 +64,48 @@ ArgumentList
 Argument
   = Expression
   / Variable
+  / String
   / FunctionCall
   / Number
 
 // 变量类型
 Variable
-  = "$" [a-zA-Z_][a-zA-Z0-9_]* {
-    return u("Variable", { value: text(), position: handlePosition(location()) });
+  = "$" [a-zA-Z_0-9][a-zA-Z0-9_\-]* {
+    return u("Variable", { data: text(), position: handlePosition(location()) });
   }
 
-// 数字
+// 字符串类型
+String
+  = '"' [^"]+ '"' {
+    return u("String", { data: text(), position: handlePosition(location()) })
+  }
+
+// 整数
+Integer
+  = [0-9]+ {
+    return u('Number', { data: parseInt(text(), 10), position: handlePosition(location()) });
+  }
+
+// 小数
+Float
+  = [0-9]+[\.][0-9]+ {
+    return u('Number', { data: parseFloat(text(), 10), position: handlePosition(location()) });
+  }
+
+// 百分数
+Percentage
+  = [0-9]+[%] {
+    return u("Number", { data: text(), position: handlePosition(location()) })
+  }
+  / [0-9]+[\.][0-9]+ {
+    return u("Number", { data: text(), position: handlePosition(location()) })
+  }
+
+// 数字类型
 Number
-  = digits:[0-9\.]+ {
-      return u('Number', { value: parseFloat(digits.join(""), 10), position: handlePosition(location()) });
-    }
+  = Percentage
+  / Float
+  / Integer
 
 // 空格处理
 _ "whitespace"

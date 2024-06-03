@@ -1,7 +1,39 @@
-import { test } from "vitest"
+import { it, describe } from "vitest"
 import { parser } from "../src/index"
 
-test("测试 parser 输出", () => {
-  const formula = "1 / 2 + SUM(1, 2, $variable)"
-  console.log(JSON.stringify(parser.parse(formula)))
+describe("测试 parser", () => {
+  it("测试基本公式", () => {
+    const formula = "SUM(1, 2, $variable)"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试混合 parser", () => {
+    const formula = "1 / 2 + SUM(1, 2, $variable)"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试业务变量", () => {
+    const formula = "$1-NAME"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试小数", () => {
+    const formula = "1.56"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试整数", () => {
+    const formula = "111"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试百分数", () => {
+    const formula = "111%"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试字符串", () => {
+    const formula = `"test string"`
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
 })
