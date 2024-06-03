@@ -6,8 +6,8 @@ import { ISyntaxError } from "./types"
 
 /**
  * Validate Formula Syntax Tree
- * @param formula 
- * @returns 
+ * @param formula
+ * @returns
  */
 export const validateFormulaSyntaxTree = (formula: string) => {
   try {
@@ -16,12 +16,13 @@ export const validateFormulaSyntaxTree = (formula: string) => {
   } catch (err) {
     if (err instanceof parser.PeggySyntaxError) {
       // Peggy Syntax Error
-      const return_err = JSON.parse(
-        JSON.stringify(err),
-      ) as parser.PeggySyntaxError
-      delete return_err.location.source
-      return return_err as ISyntaxError
+      return {
+        name: err.name,
+        message: err.message,
+        location: JSON.parse(JSON.stringify(err.location)),
+      } as ISyntaxError
     }
+
     return {
       name: "Error",
       message: JSON.stringify(err),
@@ -42,7 +43,7 @@ export const formulaSyntaxLinter = linter((view) => {
       from: error.location.start.offset,
       to: error.location.end.offset,
       message: error.message,
-      severity: "error"
+      severity: "error",
     })
   }
 
