@@ -89,22 +89,22 @@ String
 
 // 整数
 Integer
-  = [0-9]+ {
+  = [\-]?[0-9]+ {
     return u('Number', { data: parseInt(text(), 10), position: handlePosition(location()) });
   }
 
 // 小数
 Float
-  = [0-9]+[\.][0-9]+ {
+  = [\-]?[0-9]+[\.][0-9]+ {
     return u('Number', { data: parseFloat(text(), 10), position: handlePosition(location()) });
   }
 
 // 百分数
 Percentage
-  = [0-9]+[%] {
+  = [\-]?[0-9]+[%] {
     return u("Number", { data: text(), position: handlePosition(location()) })
   }
-  / [0-9]+[\.][0-9]+ {
+  / [\-]?[0-9]+[\.][0-9]+[%] {
     return u("Number", { data: text(), position: handlePosition(location()) })
   }
 

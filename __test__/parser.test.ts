@@ -27,8 +27,23 @@ describe("测试 parser", () => {
     console.log(JSON.stringify(parser.parse(formula)))
   })
 
+  it("测试负数", () => {
+    const formula = "ABS(-1)"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试负浮点数", () => {
+    const formula = "ABS(-1.34)"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
   it("测试百分数", () => {
     const formula = "111%"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
+  it("测试负百分数", () => {
+    const formula = "-111.33%"
     console.log(JSON.stringify(parser.parse(formula)))
   })
 
