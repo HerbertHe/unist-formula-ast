@@ -46,7 +46,10 @@ Primary
 
 // 函数调用
 FunctionCall
-  = name:FunctionName _ "(" _ args:ArgumentList _ ")" {
+  = name:FunctionName _ "(" _ ")" {
+    return u('Function', { data: name, children: [], position: handlePosition(location()) });
+  }
+  / name:FunctionName _ "(" _ args:ArgumentList _ ")" {
       return u('Function', { data: name, children: args, position: handlePosition(location()) });
     }
 

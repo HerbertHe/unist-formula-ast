@@ -7,6 +7,11 @@ describe("测试 parser", () => {
     console.log(JSON.stringify(parser.parse(formula)))
   })
 
+  it("测试无参数公式", () => {
+    const formula = "TODAY()"
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
+
   it("测试混合 parser", () => {
     const formula = "1 / 2 + SUM(1, 2, $variable)"
     console.log(JSON.stringify(parser.parse(formula)))
