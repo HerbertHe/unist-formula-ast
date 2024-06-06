@@ -36,4 +36,9 @@ describe("测试 parser", () => {
     const formula = `"test string"`
     console.log(JSON.stringify(parser.parse(formula)))
   })
+
+  it("测试数组", () => {
+    const formula = `JOIN(["aa", "bb"], "-")`
+    console.log(JSON.stringify(parser.parse(formula)))
+  })
 })

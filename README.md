@@ -1,6 +1,7 @@
 # unist-formula-ast
 
-> WIP
+[![version](https://img.shields.io/npm/v/unist-formula-ast.svg)](https://www.npmjs.com/package/unist-formula-ast)
+[![download](https://img.shields.io/npm/dm/unist-formula-ast.svg)](https://www.npmjs.com/package/unist-formula-ast)
 
 Excel formula ast to implement unist specification.
 

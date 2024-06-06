@@ -54,6 +54,12 @@ FunctionCall
 FunctionName
   = name:[A-Z]+ { return name.join(""); }
 
+// 数组类型
+Array
+  = '[' _ args: ArgumentList _ ']' {
+    return u('Array', { children: args, position: handlePosition(location()) })
+  }
+
 // 参数列表
 ArgumentList
   = head:Argument tail:(_ "," _ Argument)* {
@@ -67,6 +73,7 @@ Argument
   / String
   / FunctionCall
   / Number
+  / Array
 
 // 变量类型
 Variable

@@ -4,7 +4,12 @@ export type BasicCalculationNodeType =
   | "Multiplication"
   | "Division"
 
-export type BasicNodeType = "Number" | "Variable" | "String" | "Function"
+export type BasicNodeType =
+  | "Number"
+  | "Variable"
+  | "String"
+  | "Function"
+  | "Array"
 
 export enum BasicNodeEnum {
   Number = "Number",
@@ -63,6 +68,11 @@ export interface IFuntionCallNode extends IBasicNode {
   children: FuntionCallArgumentType[]
 }
 
+export interface IArrayNode extends IBasicNode {
+  type: "Array"
+  children: IBasicNode[]
+}
+
 export type SupportedNodeType =
   | IBasicNode
   | IBasicCalculationNode
@@ -70,9 +80,10 @@ export type SupportedNodeType =
   | IVariableNode
   | IStringNode
   | IFuntionCallNode
+  | IArrayNode
 
-  export interface ISyntaxError {
-    name: string
-    message: string
-    location?: IBasicNodePosition
-  }
+export interface ISyntaxError {
+  name: string
+  message: string
+  location?: IBasicNodePosition
+}
