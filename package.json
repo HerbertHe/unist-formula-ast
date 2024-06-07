@@ -1,6 +1,6 @@
 {
   "name": "unist-formula-ast",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Excel formula ast to implement unist specification",
   "type": "module",
   "main": "dist/index.js",

@@ -21,6 +21,14 @@ describe("测试 parser", () => {
     const formula = "$1-NAME"
     console.log(JSON.stringify(parser.parse(formula)))
   })
+  it("测试业务变量语法错误", () => {
+    try {
+      const formula = "$1-NAME-"
+      console.log(JSON.stringify(parser.parse(formula)))
+    } catch (err) {
+      console.log("pass")
+    }
+  })
 
   it("测试小数", () => {
     const formula = "1.56"

@@ -80,7 +80,7 @@ Argument
 
 // 变量类型
 Variable
-  = "$" [a-zA-Z_0-9][a-zA-Z0-9_\-]* {
+  = "$" [a-zA-Z_0-9][\-]?[a-zA-Z0-9_]* {
     return u("Variable", { data: text(), position: handlePosition(location()) });
   }
 
